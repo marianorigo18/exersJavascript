@@ -40,3 +40,38 @@ con el id
 -   En caso de no coinsidir con un idn mostrar en 
 consola un arror "Not Found"     
 */
+console.log("hello")
+class ProductManager{
+    constructor(){
+        this.products = [];
+    }
+    addProducts(title, description, price, thumbnail, code, stock){
+        if(title == "" || description == "" || price == "" || thumbnail == "" || code == "" || stock == ""){
+        console.log("no se permiten campos vacios");
+        }
+        const product = {
+            title, description, price, thumbnail, code, stock
+        }
+        if(this.products.length === 0){
+            product.id = 1
+        }else{
+            product.id = this.products[this.products.length-1].id + 1
+        }
+        this.products.push(product)
+    }
+    getProducts(){
+        return this.products
+    }
+    getProductsById(id){
+        const result = this.products.find(prod => prod.id === id)
+        console.log(result)
+    }
+}
+
+const product1 = new ProductManager();
+const product2 = new ProductManager();
+const product3 = new ProductManager();
+product1.addProducts("contactor", "220v", 1500, "contactor.jpg", "moncontri", 15)
+product2.addProducts("contactor", "110v", 1500, "contactor.jpg", "moncontri")
+product3.addProducts("contactor", "110v", 1500, "contactor.jpg", "moncontri")
+console.log(product3.getProducts())
