@@ -44,14 +44,14 @@ class ProductManager{
     constructor(){
         this.products = [];
     }
-    addProducts(title, description, price, thumbnail, code, stock){
+    addProducts(title, description, price, thumbnail, stock){
 
-        if(title == null || description == null || price == null || thumbnail == null || code == null || stock == null){
+        if(title == null || description == null || price == null || thumbnail == null || stock == null){
         return console.log("no se permiten campos vacios");
         }
 
         const product = {
-            title, description, price, thumbnail, code, stock
+            title, description, price, thumbnail, stock
         }
         
         if(this.products.length === 0){
@@ -59,21 +59,25 @@ class ProductManager{
         }else{
             product.code = this.products[this.products.length -1].code + 1
         }
+
         this.products.push(product)
-        // console.log("se almaecno un nuevo producto")
+        console.log("se almaecno un nuevo producto")
     }
     getProducts(){
         return this.products
     }
+    getProductsByCode(code){
+        const product = this.products.find((product) => {
+            return product.code == code
+        })
+        return product
+    }
 }
 
-const product1 = new ProductManager();
-product1.addProducts("contactor", "220v", 1500, "contactor.jpg", "moncontri", 15)
+const productManager = new ProductManager(); //crear instancia para acceder a sus metodos
 
+console.log(productManager.addProducts("contactor", "220v", 1500, "contactor.jpg", 15))
+console.log(productManager.addProducts("contactor", "24v", 1500, "contactor.jpg", 15))
 
-const product2 = new ProductManager();
-product2.addProducts("contactor", "24v", 1500, "contactor.jpg", "moncontri", 15)
+console.log(productManager.getProducts());
 
-const product3 = new ProductManager();
-product3.addProducts("contactor", "24v", 1500, "contactor.jpg", "moncontri", 15)
-console.log(product3.getProducts())
