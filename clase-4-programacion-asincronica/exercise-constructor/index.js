@@ -70,7 +70,11 @@ class ProductManager{
         const product = this.products.find((product) => {
             return product.code == code
         })
-        return product
+        if(!product){
+            return "not found"
+        }else{
+            return product
+        }
     }
 }
 
@@ -78,6 +82,8 @@ const productManager = new ProductManager(); //crear instancia para acceder a su
 
 console.log(productManager.addProducts("contactor", "220v", 1500, "contactor.jpg", 15))
 console.log(productManager.addProducts("contactor", "24v", 1500, "contactor.jpg", 15))
+console.log(productManager.addProducts("contactor", "110v", 2000, "contactor.jpg", 15))
 
-console.log(productManager.getProducts());
+//console.log(productManager.getProducts());
+console.log(productManager.getProductsByCode(3))
 
