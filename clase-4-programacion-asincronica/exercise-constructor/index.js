@@ -53,7 +53,6 @@ class ProductManager{
         const product = {
             title, description, price, thumbnail, stock
         }
-        
         if(this.products.length === 0){
             product.code = 1
         }else{
@@ -81,9 +80,9 @@ class ProductManager{
 const productManager = new ProductManager(); //crear instancia para acceder a sus metodos
 
 console.log(productManager.addProducts("contactor", "220v", 1500, "contactor.jpg", 15))
-console.log(productManager.addProducts("contactor", "24v", 1500, "contactor.jpg", 15))
-console.log(productManager.addProducts("contactor", "110v", 2000, "contactor.jpg", 15))
+console.log(productManager.addProducts("contactor", "110v", 2500, "contactor.jpg", 20))
 
-//console.log(productManager.getProducts());
-console.log(productManager.getProductsByCode(3))
+// console.log(productManager.getProducts())
+console.log(productManager.getProductsByCode(2))
+
 
