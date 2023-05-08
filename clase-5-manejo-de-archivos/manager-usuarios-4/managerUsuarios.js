@@ -5,7 +5,7 @@ const path = "./files/usuarios.json"
 
 export default class ManagerUsuarios{
     consultarUsuarios = async () => {
-        if(fs.existsSync()){
+        if(fs.existsSync()){//tratar de leer si existe el archivo
             const data = await fs.readFile(path, "utf-8");
             console.log(data);
             const users = json.parse(data)
@@ -27,7 +27,15 @@ export default class ManagerUsuarios{
     }
 }
 
+
+
+
+
+
+
+
 const manager = new ManagerUsuarios();
+
 
 const env = async() =>{
     let primeraConsultaUsuarios = await manager.consultarUsuarios();
@@ -40,6 +48,14 @@ const env = async() =>{
     }
     let result = await manager.crearUsuarios(user);
     console.log(result); //Debe devolver al usuario con un id
+    let user2 = {
+        nombre: "mariano",
+        apellido: "rigo",
+        edad: 22,
+        curso: "backend"
+    }
+    let result2 = await manager.crearUsuarios(user2)
+    console.log(result2)
     let segundaConsultaUsuarios = await manager.consultarUsuarios();
     console.log(segundaConsultaUsuarios); //Debe devolver al usuario instertado
 }
