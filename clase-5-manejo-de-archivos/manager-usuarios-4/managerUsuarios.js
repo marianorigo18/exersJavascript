@@ -1,5 +1,5 @@
 import fs from "fs"
-import { json } from "stream/consumers";
+
 
 const path = "./files/usuarios.json"
 
@@ -8,7 +8,7 @@ export default class ManagerUsuarios{
         if(fs.existsSync()){//tratar de leer si existe el archivo
             const data = await fs.readFile(path, "utf-8");
             console.log(data);
-            const users = json.parse(data)
+            const users = JSON.parse(data)
             return users
         }else{
             return []
